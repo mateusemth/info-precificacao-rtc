@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infográfico Avançado de Precificação | Gross-up vs. Sem Gross-up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 450px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #F28F3B, #E83151);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-[#304D6D]">
+
+    <!-- HERO SECTION -->
+    <header class="gradient-bg text-white text-center p-8 md:p-16 mb-16 shadow-2xl">
+        <h1 class="text-4xl md:text-6xl font-black mb-4 tracking-tight">Decifrando a Precificação</h1>
+        <p class="text-lg md:text-2xl max-w-3xl mx-auto opacity-90">Um guia visual avançado para dominar o cálculo de impostos "por dentro" (Gross-up) e "por fora".</p>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-8">
+
+        <!-- PILARES DA PRECIFICACAO -->
+        <section id="pilares" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Os Pilares da Formação de Preço</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Card Markup -->
+                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                    <h3 class="text-3xl font-bold text-[#00A6A6] mb-4">Markup</h3>
+                    <p class="mb-6 text-slate-600">Um índice aplicado sobre o custo para formar o preço. É o caminho mais direto para a precificação.</p>
+                    <div class="bg-slate-100 p-4 rounded-lg mb-4">
+                        <p class="text-sm text-slate-500">Fórmula:</p>
+                        <p class="text-lg font-mono font-bold">Preço = Custo × (1 + Markup)</p>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-bold">💡 Quando usar:</h4>
+                        <p class="text-slate-600">Ideal para negócios com alto volume de produtos, onde a agilidade na precificação é essencial.</p>
+                    </div>
+                </div>
+                <!-- Card Margem de Lucro -->
+                <div class="bg-white rounded-xl shadow-lg p-8 transform hover:scale-105 hover:shadow-2xl transition-all duration-300">
+                    <h3 class="text-3xl font-bold text-[#F28F3B] mb-4">Margem de Lucro</h3>
+                    <p class="mb-6 text-slate-600">Calcula o preço de venda para garantir um percentual de lucro sobre o valor final. Visão clara da rentabilidade.</p>
+                    <div class="bg-slate-100 p-4 rounded-lg mb-4">
+                        <p class="text-sm text-slate-500">Fórmula:</p>
+                        <p class="text-lg font-mono font-bold">Preço = Custo / (1 - Margem)</p>
+                    </div>
+                    <div class="mt-4">
+                        <h4 class="font-bold">💡 Quando usar:</h4>
+                        <p class="text-slate-600">Fundamental para análises financeiras estratégicas, focando na lucratividade real de cada venda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FLUXO DOS MODELOS -->
+        <section id="modelos" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">O Fator Imposto: Dois Caminhos, Um Destino</h2>
+            
+            <!-- Modelo Sem Gross-up -->
+            <div class="bg-white rounded-xl shadow-lg p-8 mb-12">
+                <h3 class="text-2xl md:text-3xl font-bold text-[#00A6A6] mb-6">Modelo 1: Sem Gross-up (Cálculo "Por Fora")</h3>
+                <p class="text-slate-600 mb-8">O método transparente, alinhado à Reforma Tributária. O imposto é adicionado no final, de forma clara.</p>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                    <div class="text-center p-4 bg-slate-100 rounded-lg w-full md:w-1/4">
+                        <p class="text-5xl mb-2">1️⃣</p>
+                        <p class="font-bold">Definir Preço Líquido</p>
+                        <p class="text-sm">(Custo + Lucro)</p>
+                    </div>
+                    <div class="text-4xl font-thin text-slate-300">➡️</div>
+                    <div class="text-center p-4 bg-slate-100 rounded-lg w-full md:w-1/4">
+                        <p class="text-5xl mb-2">2️⃣</p>
+                        <p class="font-bold">Aplicar Imposto</p>
+                        <p class="text-sm">(% sobre o Preço Líquido)</p>
+                    </div>
+                    <div class="text-4xl font-thin text-slate-300">➡️</div>
+                    <div class="text-center p-4 bg-[#00A6A6] text-white rounded-lg w-full md:w-1/4 shadow-lg">
+                        <p class="text-5xl mb-2">🏁</p>
+                        <p class="font-bold">Preço Final</p>
+                        <p class="text-sm">(Transparência Total)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modelo Com Gross-up -->
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <h3 class="text-2xl md:text-3xl font-bold text-[#F28F3B] mb-6">Modelo 2: Com Gross-up (Cálculo "Por Dentro")</h3>
+                <p class="text-slate-600 mb-8">O método de proteção da margem. O preço final já nasce com o imposto embutido em sua base.</p>
+                 <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                    <div class="text-center p-4 bg-slate-100 rounded-lg w-full md:w-1/4">
+                        <p class="text-5xl mb-2">1️⃣</p>
+                        <p class="font-bold">Definir Receita Líquida</p>
+                        <p class="text-sm">(Meta de (Custo + Lucro))</p>
+                    </div>
+                    <div class="text-4xl font-thin text-slate-300">➡️</div>
+                    <div class="text-center p-4 bg-slate-100 rounded-lg w-full md:w-1/4">
+                        <p class="text-5xl mb-2">2️⃣</p>
+                        <p class="font-bold">Calcular Preço Final</p>
+                        <p class="text-sm">(Que absorve o imposto)</p>
+                    </div>
+                    <div class="text-4xl font-thin text-slate-300">➡️</div>
+                    <div class="text-center p-4 bg-[#F28F3B] text-white rounded-lg w-full md:w-1/4 shadow-lg">
+                        <p class="text-5xl mb-2">🏁</p>
+                        <p class="font-bold">Preço Final</p>
+                        <p class="text-sm">(Margem Garantida)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTUDO DE CASO -->
+        <section id="estudo-caso" class="mb-20">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Mergulho Profundo no Estudo de Caso</h2>
+            <p class="max-w-3xl mx-auto text-center text-slate-600 mb-12">Visualizando o impacto de cada modelo com dados concretos.</p>
+
+            <div class="bg-white rounded-xl shadow-2xl p-6 md:p-10">
+                <div class="flex flex-wrap justify-center gap-4 md:gap-8 text-center mb-10">
+                    <div class="bg-slate-100 p-4 rounded-lg flex-grow"><p class="text-sm text-slate-500">Custo</p><p class="text-2xl font-bold">R$ 100,00</p></div>
+                    <div class="bg-slate-100 p-4 rounded-lg flex-grow"><p class="text-sm text-slate-500">Receita Líquida Alvo</p><p class="text-2xl font-bold">R$ 150,00</p></div>
+                    <div class="bg-slate-100 p-4 rounded-lg flex-grow"><p class="text-sm text-slate-500">Imposto</p><p class="text-2xl font-bold">17,7%</p></div>
+                </div>
+
+                <!-- Gráfico de Composição -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center mb-12">
+                    <div class="chart-container h-[400px] md:h-[450px]">
+                        <canvas id="compositionChart"></canvas>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Composição do Preço Final</h3>
+                        <p class="text-slate-600 mb-4">Este gráfico de rosca revela como o preço final é dividido entre custo, lucro e imposto em cada cenário. Note como a fatia do imposto cresce significativamente no modelo com Gross-up.</p>
+                        <div class="p-4 rounded-lg glass-card border-slate-300">
+                            <h4 class="font-bold text-[#E83151]">Análise Rápida:</h4>
+                            <p class="text-sm text-slate-700">O método com Gross-up exige um valor de imposto maior para proteger os R$ 150,00 líquidos, inflando o preço total pago pelo consumidor.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gráfico de Comparação -->
+                <hr class="my-12 border-slate-200">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                     <div>
+                        <h3 class="text-2xl font-bold mb-4">Comparativo Direto do Preço Final</h3>
+                        <p class="text-slate-600 mb-4">O gráfico de barras mostra a diferença gritante no preço final. Para a empresa receber os mesmos R$150, o cliente paga mais caro no modelo com Gross-up.</p>
+                         <div class="p-4 rounded-lg glass-card border-slate-300">
+                            <h4 class="font-bold text-[#E83151]">Resultado Numérico:</h4>
+                            <p class="text-sm text-slate-700">Uma diferença de <span class="font-bold">R$ 5,71</span> no preço final, que corresponde exatamente ao valor extra de imposto arrecadado no modelo "por dentro".</p>
+                        </div>
+                    </div>
+                    <div class="chart-container h-[400px] md:h-[450px]">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCLUSÃO -->
+        <section id="conclusao" class="gradient-bg text-white text-center p-8 md:p-16 rounded-2xl shadow-2xl mb-12">
+            <h2 class="text-3xl md:text-4xl font-black mb-4 tracking-tight">Estratégia e Futuro</h2>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto opacity-90 mb-8">A escolha do modelo de precificação impacta não apenas sua margem, mas também a percepção de valor do seu cliente e sua adequação às novas leis fiscais.</p>
+            <div class="glass-card rounded-xl p-6 max-w-2xl mx-auto">
+                 <h4 class="text-xl font-bold mb-2">Recomendação para o Futuro:</h4>
+                 <p class="opacity-90">Adapte-se à transparência. Comece a modelar seus preços com o cálculo "por fora" para se alinhar à Reforma Tributária e construir uma relação de confiança com seus clientes.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapLabel = (label) => {
+                if (label.length <= 16) return label;
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).trim().length > 16) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                }
+                if (currentLine) lines.push(currentLine.trim());
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) return label.join(' ');
+                return label;
+            };
+
+            const currencyTooltipLabelCallback = (context) => {
+                let label = context.dataset.label || '';
+                if (label) label += ': ';
+                if (context.parsed.y !== null) {
+                    label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(context.parsed.y);
+                }
+                return label;
+            };
+            
+            const currencyDoughnutTooltipLabelCallback = (context) => {
+                let label = context.label || '';
+                if (label) label += ': ';
+                if (context.parsed !== null) {
+                     label += new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(context.parsed);
+                }
+                return label;
+            };
+
+            // Gráfico 1: Composição
+            const ctxComposition = document.getElementById('compositionChart').getContext('2d');
+            new Chart(ctxComposition, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Custo (R$ 100)', 'Lucro (R$ 50)', 'Imposto'],
+                    datasets: [{
+                        label: 'Sem Gross-up (R$ 176,55)',
+                        data: [100, 50, 26.55],
+                        backgroundColor: ['#304D6D', '#00A6A6', 'rgba(0, 166, 166, 0.5)'],
+                        borderColor: '#ffffff',
+                        borderWidth: 4,
+                    }, {
+                        label: 'Com Gross-up (R$ 182,26)',
+                        data: [100, 50, 32.26],
+                        backgroundColor: ['#304D6D', '#F28F3B', 'rgba(242, 143, 59, 0.5)'],
+                        borderColor: '#ffffff',
+                        borderWidth: 4,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' },
+                        tooltip: { callbacks: { label: currencyDoughnutTooltipLabelCallback } }
+                    }
+                }
+            });
+
+            // Gráfico 2: Comparação
+            const ctxComparison = document.getElementById('comparisonChart').getContext('2d');
+            new Chart(ctxComparison, {
+                type: 'bar',
+                data: {
+                    labels: [wrapLabel('Preço Final de Venda')],
+                    datasets: [{
+                        label: 'Sem Gross-up (Por Fora)',
+                        data: [176.55],
+                        backgroundColor: '#00A6A6',
+                        borderColor: '#008b8b',
+                        borderWidth: 1,
+                        barPercentage: 0.5,
+                        categoryPercentage: 0.5
+                    }, {
+                        label: 'Com Gross-up (Por Dentro)',
+                        data: [182.26],
+                        backgroundColor: '#F28F3B',
+                        borderColor: '#d27832',
+                        borderWidth: 1,
+                        barPercentage: 0.5,
+                        categoryPercentage: 0.5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true, ticks: { callback: (value) => 'R$ ' + value.toFixed(2).replace('.', ',') } }
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: { callbacks: { title: tooltipTitleCallback, label: currencyTooltipLabelCallback } }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
